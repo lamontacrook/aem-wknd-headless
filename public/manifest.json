@@ -1,0 +1,15 @@
+{
+  "short_name": "WKND: Headless App",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "favicon-152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

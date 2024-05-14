@@ -1,0 +1,31 @@
+[
+  {
+    "id": "teaser",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text-area",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "name": "callToAction",
+        "label": "Call to Action",
+        "valueType": "string"
+      },
+      {
+        "component": "asset",
+        "name": "asset",
+        "label": "Asset",
+        "valueType": "asset"
+      }
+    ]
+  }
+]

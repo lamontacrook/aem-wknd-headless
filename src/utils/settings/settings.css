@@ -1,0 +1,176 @@
+@font-face {
+  font-family: adobeclean-regular;
+  src: url('../../media/fonts/AdobeClean-Regular.ttf'), format('truetype');
+}
+
+@font-face {
+  font-family: adobeclean-light;
+  src: url('../../media/fonts/AdobeClean-Light.ttf'), format('truetype');
+}
+
+.main.settings {
+  width: 100%;
+  background: var(--main-color-opacity);
+  display: flex;
+  background-image: url('../../media/AdobeStock_109806363.jpeg');
+  top: 0;
+  left: 0;
+  background-position: 0px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.main.settings.iframe {
+  height: 800px;
+  background-color: var(--main-dark-background);
+}
+
+.main>.settings-form {
+  background-color: var(--main-color-opacity);
+  margin: auto;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column-reverse;
+  color: var(--main-color);
+  font-size: small;
+  align-items: flex-start;
+  align-content: center;
+  width: 90vw;
+}
+
+.main.settings fieldset {
+  border: 0px;
+}
+
+.main-body.settings a {
+  color: var(--main-accent-color);
+  font-family: inherit;
+}
+
+.main.settings p, li {
+  font-family: 'adobeclean-light', Arial, Helvetica, sans-serif;
+  text-align: left;
+  line-height: 1.5em;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.main.settings h2 {
+  font-family: 'adobeclean-light', Arial, Helvetica, sans-serif;
+  text-align: left;
+  line-height: 1.5em;
+  text-shadow: none;
+  color: var(--main-accent-color);
+}
+
+.main .settings-form > form {
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+
+.main.settings-form > form > button {
+  margin-left: 130px;
+}
+
+.main.settings input,
+.main.settings select {
+  width: 60%;
+  margin-top: 8px;
+  width: 90%;
+}
+
+.main.settings .settings-form label {
+  padding-right: 5px;
+  text-align: start;
+  padding: 10px;
+  display: block;
+  font-family: 'adobeclean-regular' Arial, Helvetica, sans-serif;
+}
+
+.main.settings input[type=text],
+.main.settings select {
+  padding: 10px;
+  border: 0;
+  border: 1px solid var(--main-accent-color);
+  background: var(--main-color-opacity);
+  color: var(--main-accent-color);
+  display: block;
+}
+
+.main.settings input[type=checkbox] {
+  border: 0;
+  border-bottom: 1px solid black;
+  background: var(--main-color-opacity);
+  color: var(--main-accent-color);
+  border-radius: 5px;
+  box-shadow: .5px .5px 2px;
+  width: auto;
+}
+
+.main.settings input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+}
+.main.settings input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  border: 1px solid var(--main-accent-color);
+  border-radius: 3px;
+  box-shadow: .5px .5px 2px;
+  background-color: #222;
+  
+}
+.main.settings input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid var(--main-accent-color);
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
+}
+
+.main.settings input:required+span:after {
+  content: "Required";
+}
+
+.main.settings .instructions {
+  width: 90%;
+  margin: 24px auto;
+}
+
+.main.settings .instructions img {
+  max-width: 300px;
+}
+
+@media only screen and (min-width: 900px) { 
+  .main>.settings-form {
+    flex-direction: row;
+  }
+
+  .main>.settings-form form {
+    width: 50%;
+  }
+
+  .main.settings .instructions {
+    border-left: .75px solid var(--main-accent-color);
+    padding-left: 30px;
+    height: 100%;
+    width: 50%;
+  }
+}
