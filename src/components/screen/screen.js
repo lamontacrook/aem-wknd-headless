@@ -32,18 +32,22 @@ const Screen = () => {
 
   configPath = `/content/dam/${context.project}/site/configuration/configuration-v2`;
 
+  const params = { path: configPath };
+  if (context.serviceURL.includes('author')) params['ts'] = new Date().getTime();
+  else params['version'] = context.version;
+
   useEffect(() => {
     const sdk = prepareRequest(context);
-    sdk.runPersistedQuery(`aem-demo-assets/${context.pqs.config}`, { path: configPath })
+    sdk.runPersistedQuery(`aem-demo-assets/${context.pqs.config}`, params)
       .then(({ data }) => {
         if (data) {
           setConfiguration(data);
           context.config = data;
-          
-          path.current = path.current !== '' ? path.current : data.configurationByPath.item.homePage._path;
-          const params = { path: path.current, variation: context.audience?.value,  };
 
-          if (context.serviceURL.includes('author')) params['ts'] = new Date().getTime();
+          path.current = path.current !== '' ? path.current : data.configurationByPath.item.homePage._path;
+          params['path'] = path.current;
+          params['variation'] = context.audience?.value;
+
           sdk.runPersistedQuery(`aem-demo-assets/${context.pqs.screen}`, params)
             .then(({ data }) => {
               if (data) {

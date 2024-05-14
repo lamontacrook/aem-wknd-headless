@@ -27,7 +27,7 @@ const Screendetails = () => {
   const navigate = useNavigate();
 
   const version = localStorage.getItem('rda') === 'v1' ? 'v1' : 'v2';
-  
+
   const configPath = `/content/dam/${context.project}/site/configuration/configuration-v2`;
 
   useEffect(() => {
@@ -42,7 +42,12 @@ const Screendetails = () => {
 
     const sdk = prepareRequest(context);
 
-    sdk.runPersistedQuery(`aem-demo-assets/${context.pqs.config}`, { path: configPath })
+    const params = { path: configPath };
+    if (context.serviceURL.includes('author')) params['ts'] = new Date().getTime();
+    else params['version'] = context.version;
+
+
+    sdk.runPersistedQuery(`aem-demo-assets/${context.pqs.config}`, params)
       .then(({ data }) => {
         if (data) {
           setConfiguration(data);
@@ -57,8 +62,8 @@ const Screendetails = () => {
           });
 
           path = context.rootPath + '/aem-demo-assets/' + path;
-
-          sdk.runPersistedQuery(`aem-demo-assets/${context.pqs.adventure}`, { path: path !== '' ? '/' + path : data.configurationByPath.item.homePage._path })
+          params['path'] = path !== '' ? '/' + path : data.configurationByPath.item.homePage._path;
+          sdk.runPersistedQuery(`aem-demo-assets/${context.pqs.adventure}`, params)
             .then(({ data }) => {
               if (data) {
                 let pretitle = data.adventureByPath.item.description.plaintext;

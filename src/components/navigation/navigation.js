@@ -43,6 +43,9 @@ const Navigation = ({ className, config, screen }) => {
         project: `/content/dam/${context.project}`
       };
 
+      if (context.serviceURL.includes('author')) params['ts'] = new Date().getTime();
+      else params['version'] = context.version;
+
       sdk.runPersistedQuery(`aem-demo-assets/${context.pqs.nav}`, params)
         .then((data) => {
           if (data) {
@@ -55,7 +58,7 @@ const Navigation = ({ className, config, screen }) => {
         });
     }
 
-    if(Object.keys(context.navigationResponse).length === 0) fetchNav();
+    if (Object.keys(context.navigationResponse).length === 0) fetchNav();
   }, [handleError, config, context]);
 
   function viewGQL() {
