@@ -22,7 +22,7 @@ export const AppContext = createContext({
     nav: 'gql-navigation-v2',
     adventure: 'gql-adventure-v2'
   },
-  lang: localStorage.lange ? JSON.parse(localStorage.lang) : {value:'en',label:'English'},
+  lang: localStorage.lang ? JSON.parse(localStorage.lang) : {value:'en',label:'English'},
   audience: localStorage.audience ? JSON.parse(localStorage.audience) : {},
   rootPath: localStorage.rootPath || 'content/dam',
   config: {},

@@ -21,3 +21,10 @@ body {
   padding-top:64px;
   opacity: 1;
 }
+
+.main-body  h4,
+.main-body h4 {
+  color: #000;
+  padding-left: 35px;
+  font-size: larger;
+}

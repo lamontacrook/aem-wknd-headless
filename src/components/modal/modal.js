@@ -18,29 +18,36 @@ const Modal = ({ config }) => {
     }
   };
   const customize = true;
+  
   const [language, setLanguage] = useState(JSON.parse(localStorage.getItem('lang')) || {value: 'en', label: 'English'});
-  const [audience, setAudience] = useState(JSON.parse(localStorage.getItem('audience')));
+  const [audience, setAudience] = useState(JSON.parse(localStorage.getItem('audience')) || {value:'', label:''});
   let [cssVariables, setCSSVariables] = useState([]);
   const [cssList, setCSSList] = useState([]);
 
   useEffect(() => {
+    if(!audience)
+      localStorage.removeItem('audience');
+    else
+      localStorage.setItem('audience', JSON.stringify(audience));
+  }, [audience.value, audience.label]);
 
-  }, []);
+  useEffect(() => {
+    localStorage.setItem('lang', JSON.stringify(language));
+    context.lang = language;
+  }, [language.value, language.label]);
 
   const updateAudience = (event) => {
     if (event === null) {
-      localStorage.removeItem('audience');
+      setAudience({value:'', label:''});
     } else {
-      localStorage.setItem('audience', JSON.stringify(event));
       setAudience(event);
     }
   };
 
   const updateLanguage = (event) => {
     if (event === null) {
-      localStorage.removeItem('lang');
+      setLanguage({value:'en',label:'English'});
     } else {
-      localStorage.setItem('lang', JSON.stringify(event));
       setLanguage(event);
     }
   };

@@ -9,6 +9,8 @@ import PropTypes from 'prop-types';
 import { AppContext } from '../../utils/context';
 import { Helmet } from 'react-helmet-async';
 import Delayed from '../../utils/delayed';
+import { editorProps } from '../../utils/ue-definitions';
+import { mapJsonRichText } from '../../utils/renderRichText';
 
 const Screendetails = () => {
   const context = useContext(AppContext);
@@ -114,81 +116,102 @@ const Screendetails = () => {
       <Helmet>
         <title>WKND: {title}</title>
       </Helmet>
-      {content && content.screen && config.configurationByPath &&
-        <Header content={content.screen.body.header} config={config} className='screendetail' />
-      }
-
       {overview && itinerary && whatToBring && adventure && adventure.adventureByPath && (
-        <div className='main-body screendetail'>
-          <div className='inner-content'>
-            <h2>{title}</h2>
+        <div className='screen' {...editorProps(adventure.adventureByPath?.item, adventure.adventureByPath?.item?.title, '', 'reference')}>
+          {content && content.screen && config.configurationByPath &&
+            <Header content={content.screen.body.header} config={config} className='screendetail' />
+          }
 
-            <div className='adventure-details'>
-              <ul>
-                <li>
-                  <h6>Activity</h6>
-                  <hr />
-                  <p>{adventure.adventureByPath.item.activity}</p>
-                </li>
-                <li>
-                  <h6>Adventure Type</h6>
-                  <hr />
-                  <p>{adventure.adventureByPath.item.adventureType}</p>
-                </li>
-                <li>
-                  <h6>Trip Length</h6>
-                  <hr />
-                  <p>{adventure.adventureByPath.item.tripLength}</p>
-                </li>
-                <li>
-                  <h6>Group Size</h6>
-                  <hr />
-                  <p>{adventure.adventureByPath.item.groupSize}</p>
-                </li>
-                <li>
-                  <h6>Difficulty</h6>
-                  <hr />
-                  <p>{adventure.adventureByPath.item.difficulty}</p>
-                </li>
-                <li>
-                  <h6>Price</h6>
-                  <hr />
-                  <p>{adventure.adventureByPath.item.price}</p>
-                </li>
-              </ul>
-            </div>
 
-            <div>
-              <div className="tab">
-                <div className="item item-1" style={overview}>
-                  <div>
-                    <span>Overview</span>
-                    <div className="inner-text" dangerouslySetInnerHTML={{ __html: adventure && adventure.adventureByPath && adventure.adventureByPath.item.description.html }} />
+          <div className='main-body screendetail' {...editorProps(adventure.adventureByPath.item, 'Screen Components', 'block', 'container', 'container')}>
+            <div className='inner-content'>
+              <h4 data-aue-prop='title' data-aue-type='text' data-aue-label='Title'>{adventure.adventureByPath.item.title}</h4>
+
+              <div className='adventure-details'>
+                <ul>
+                  <li>
+                    <h6>Activity</h6>
+                    <hr />
+                    <p data-aue-prop='activity' data-aue-type='text' data-aue-label='Activity'>{adventure.adventureByPath.item.activity}</p>
+                  </li>
+                  <li>
+                    <h6>Adventure Type</h6>
+                    <hr />
+                    <p>{adventure.adventureByPath.item.adventureType}</p>
+                  </li>
+                  <li>
+                    <h6>Trip Length</h6>
+                    <hr />
+                    <p>{adventure.adventureByPath.item.tripLength}</p>
+                  </li>
+                  <li>
+                    <h6>Group Size</h6>
+                    <hr />
+                    <p>{adventure.adventureByPath.item.groupSize}</p>
+                  </li>
+                  <li>
+                    <h6>Difficulty</h6>
+                    <hr />
+                    <p>{adventure.adventureByPath.item.difficulty}</p>
+                  </li>
+                  <li>
+                    <h6>Price</h6>
+                    <hr />
+                    <p>{adventure.adventureByPath.item.price}</p>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <div className="tab">
+                  <div className="item item-1" style={overview}>
+                    <div>
+                      <span>Overview</span>
+                      {Object.prototype.hasOwnProperty.call(adventure.adventureByPath.item.description, 'json') && (
+                        <div data-aue-prop='description' data-aue-type='richtext' data-aue-label='Description' className="inner-text">{mapJsonRichText(adventure.adventureByPath.item.description.json)}</div>
+                      )}
+                      {!Object.prototype.hasOwnProperty.call(adventure.adventureByPath.item.description, 'json') && (
+                        <div className="inner-text" dangerouslySetInnerHTML={{ __html: adventure && adventure.adventureByPath && adventure.adventureByPath.item.description.html }} />
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="item item-2" style={itinerary}>
-                  <div>
-                    <span>Itinerary</span>
-                    <div className="inner-text" dangerouslySetInnerHTML={{ __html: adventure && adventure.adventureByPath && adventure.adventureByPath.item.itinerary.html }} />
+                  <div className="item item-2" style={itinerary}>
+                    <div>
+                      <span>Itinerary</span>
+                      {Object.prototype.hasOwnProperty.call(adventure.adventureByPath.item.itinerary, 'json') && (
+                        <div data-aue-prop='itinerary' data-aue-type='richtext' data-aue-label='Itinerary' className="inner-text">{mapJsonRichText(adventure.adventureByPath.item.itinerary.json)}</div>
+                      )}
+                      {!Object.prototype.hasOwnProperty.call(adventure.adventureByPath.item.itinerary, 'json') && (
+                        <div className="inner-text" dangerouslySetInnerHTML={{ __html: adventure && adventure.adventureByPath && adventure.adventureByPath.item.itinerary.html }} />
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="item item-3" style={whatToBring}>
-                  <div>
-                    <span>What to Bring</span>
-                    <div className="inner-text" dangerouslySetInnerHTML={{ __html: adventure && adventure.adventureByPath && adventure.adventureByPath.item.gearList.html }} />
+                  <div className="item item-3" style={whatToBring}>
+                    <div>
+                      <span>What to Bring</span>
+                      {Object.prototype.hasOwnProperty.call(adventure.adventureByPath.item.gearList, 'json') && (
+                        <div data-aue-prop='gearList' data-aue-type='richtext' data-aue-label='What to Bring' className="inner-text">{mapJsonRichText(adventure.adventureByPath.item.gearList.json)}</div>
+                      )}
+                      {!Object.prototype.hasOwnProperty.call(adventure.adventureByPath.item.gearList, 'json') && (
+                        <div className="inner-text" dangerouslySetInnerHTML={{ __html: adventure && adventure.adventureByPath && adventure.adventureByPath.item.gearList.html }} />
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+
+
+
+          <footer>
+            {config.configurationByPath && config.configurationByPath.item.footerExperienceFragment &&
+              <Delayed waitBeforeShow={700}><Footer config={config.configurationByPath.item.footerExperienceFragment} /></Delayed>
+            }
+          </footer>
         </div>
       )}
-
-      <footer>
-        {config.configurationByPath && config.configurationByPath.item.footerExperienceFragment &&
-          <Delayed waitBeforeShow={700}><Footer config={config.configurationByPath.item.footerExperienceFragment} /></Delayed>
-        }
-      </footer>
     </React.Fragment >
   );
 };
