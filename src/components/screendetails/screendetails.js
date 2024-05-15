@@ -54,11 +54,15 @@ const Screendetails = () => {
 
           const items = { 'overview': setOverview, 'itinerary': setItinerary, 'whatToBring': setWhatToBring };
 
+          const { item } = data.configurationByPath;
           Object.keys(items).forEach((key) => {
-            if (Object.keys(data.configurationByPath.item[key]).includes('_dynamicUrl'))
-              items[key]({ backgroundImage: 'url("' + `${context.serviceURL.replace(/\/$/, '')}${data.configurationByPath.item[key]._dynamicUrl}` + '")' });
-            else
-              items[key]({ backgroundImage: 'url("' + `${data.configurationByPath.item[key]._authorUrl}/jcr:content/renditions/${data.configurationByPath.item.renditionsConfiguration[900]}` + '")' });
+            if (!item[key]) items[key] = '';
+            else {
+              if (Object.keys(item[key]).includes('_dynamicUrl'))
+                items[key]({ backgroundImage: 'url("' + `${context.serviceURL.replace(/\/$/, '')}${item[key]._dynamicUrl}` + '")' });
+              else if (Object.keys(item[key]).includes('_authorUrl'))
+                items[key]({ backgroundImage: 'url("' + `${data.configurationByPath.item[key]._authorUrl}/jcr:content/renditions/${data.configurationByPath.item.renditionsConfiguration[900]}` + '")' });
+            }
           });
 
           path = context.rootPath + '/aem-demo-assets/' + path;
@@ -68,7 +72,7 @@ const Screendetails = () => {
               if (data) {
                 let pretitle = data.adventureByPath.item.description.plaintext;
                 pretitle = pretitle && pretitle.substring(0, pretitle.indexOf('.'));
-
+                console.log(data);
                 let content = {
                   screen: {
                     body: {
@@ -81,7 +85,8 @@ const Screendetails = () => {
                           preTitle: pretitle,
                           _metadata: data.adventureByPath.item._metadata,
                           style: 'hero',
-                          _path: data.adventureByPath.item._path
+                          _path: data.adventureByPath.item._path,
+                          _variation: data.adventureByPath.item._variation || 'master'
                         }
                       }
                     }
