@@ -81,7 +81,7 @@ export const componentDefinition = (context) => {
               'aem': {
                 'cf': {
                   'name': 'teaser',
-                  'cfModel': '/conf/aem-demo-assets/settings/dam/cfm/models/teaser',
+                  'cfModel': '/conf/aem-demo-assets/settings/dam/cfm/models/teaser-v2',
                   'cfFolder': `/content/dam/${context.project}/site/en/shared/`,
                   'title': 'Teaser',
                   'description': 'Teaser Content Fragment',
@@ -101,7 +101,7 @@ export const componentDefinition = (context) => {
               'aem': {
                 'cf': {
                   'name': 'image-list',
-                  'cfModel': '/conf/aem-demo-assets/settings/dam/cfm/models/image-list',
+                  'cfModel': '/conf/aem-demo-assets/settings/dam/cfm/models/image-list-v2',
                   'cfFolder': `/content/dam/${context.project}/site/en/shared/`,
                   'title': 'Image List',
                   'description': 'Image List Content Fragment',
