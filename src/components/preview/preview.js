@@ -30,6 +30,7 @@ const Preview = () => {
           setConfiguration(data);
           context.config = data;
           const params = { path: `/${path}` };
+          if (context.serviceURL.includes('author')) params['ts'] = new Date().getTime();
           if(context.audience?.value) params['variation'] = context.audience?.value;
           sdk.runPersistedQuery(`aem-demo-assets/gql-${modelType}`, params)
             .then(({ data }) => {
