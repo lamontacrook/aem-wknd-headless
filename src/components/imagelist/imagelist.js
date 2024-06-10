@@ -252,7 +252,7 @@ AdventureCard.propTypes = {
 
 const AuthorCard = ({ item }) => {
   const editorProps = {
-    'data-aue-resource': `urn:aemconnection:${item.path}/jcr:content/data/master`,
+    'data-aue-resource': `urn:aemconnection:${item._path}/jcr:content/data/master`,
     'data-aue-type': 'component',
     'data-aue-label': `${item.firstName} ${item.lastName}`,
     'data-aue-behavior': 'component',

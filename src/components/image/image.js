@@ -35,9 +35,8 @@ const Image = ({ asset, imageProps = {
     </picture>
   );
 
-  let src = context.serviceURL.replace(/\/+$/, '') + asset?._path;
-
-  src = imageUrl(context, asset);
+  const src = context.serviceURL.replace(/\/+$/, '') + asset._path;
+  const srcDM = imageUrl(context, asset);
 
   return (
     <picture>
@@ -47,7 +46,7 @@ const Image = ({ asset, imageProps = {
         src={src}
         width={asset.width}
         height={asset.height}
-        srcSet={srcSet(src, imageSizes)}
+        srcSet={srcSet(srcDM, imageSizes)}
         sizes={sizes(imageSizes)} {...imageProps} />
     </picture>
   );

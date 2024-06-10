@@ -74,7 +74,7 @@ const Screendetails = () => {
               if (data) {
                 let pretitle = data.adventureByPath.item.description.plaintext;
                 pretitle = pretitle && pretitle.substring(0, pretitle.indexOf('.'));
-                console.log(data);
+               
                 let content = {
                   screen: {
                     body: {
