@@ -16,10 +16,7 @@ const Preview = () => {
   const [data, setData] = useState('');
 
   const props = useParams();
-
-  console.log(props);
   const [modelType, path] = Object.values(props)[0].split(/\/(.*)/s);
-  console.log(path);
 
   useEffect(() => {
     const configPath = `/content/dam/${context.project}/site/configuration/configuration-v2`;

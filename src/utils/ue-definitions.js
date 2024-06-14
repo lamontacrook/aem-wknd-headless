@@ -86,7 +86,7 @@ export const componentDefinition = (context) => {
                   'title': 'Teaser',
                   'description': 'Teaser Content Fragment',
                   'template': {
-                    'title': 'The title',
+                    'title': 'Teaser',
                     'style': 'hero',
                     'asset': `/content/dam/${context.project}/assets/AdobeStock_238607111.jpeg`
                   }
@@ -106,7 +106,8 @@ export const componentDefinition = (context) => {
                   'title': 'Image List',
                   'description': 'Image List Content Fragment',
                   'template': {
-                    'style': 'slider-list'
+                    'style': 'slider-list',
+                    'headline': 'Image List'
                   }
                 }
               }
@@ -124,7 +125,7 @@ export const componentDefinition = (context) => {
                   'title': 'Article',
                   'description': 'Magazine Article Content Fragment',
                   'template': {
-                    'title': 'Magazine Article'
+                    'headline': 'Magazine Article'
                   }
                 }
               }
