@@ -96,7 +96,7 @@ const Navigation = ({ className, config, screen }) => {
           <ul>
             {nav && nav.data?.screenV2List?.items.map((item, i) => (
               <li key={i}>
-                <LinkManager className={`navItem ${className}`} item={item}>{item.screenTitle}</LinkManager>
+                <LinkManager className={`navItem ${className}`} item={item} ue={false}>{item.screenTitle}</LinkManager>
               </li>
             ))}
             <li><Link to={'/settings'} className={`navItem ${className}`} name={'Settings'}>{'Settings'}</Link></li>

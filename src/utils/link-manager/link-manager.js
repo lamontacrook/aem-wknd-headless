@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context';
 
-const LinkManager = ({ children, item, className }) => {
+const LinkManager = ({ children, item, className, ue = true }) => {
   const context = useContext(AppContext);
-
   let path = item._path ? item._path.replace(`/${context.rootPath}`, '') : '';
   let previous = '';
   const paths = path.split('/').map((item) => {
@@ -16,20 +15,33 @@ const LinkManager = ({ children, item, className }) => {
 
   path = paths.join('/');
 
-  // <Link to={LinkManager(content.callToActionLink._path, config, context)}
-  //   data-aue-type='reference' data-aue-prop='callToActionLink' data-aue-label='Call to Action' className='button'>{content.callToAction}</Link>
+  const linkProps = {
+    'data-aue-prop': 'callToActionLink',
+    'data-aue-type': 'reference',
+    'data-aue-label': 'Call to Action',
+    'data-aue-filter': 'cf'
+  };
 
-  return (
-    <Link key={path} data-aue-type='reference' data-aue-filter='cf' data-aue-prop='callToActionLink' data-aue-label='Call to Action' className={className} name={item.title || item.name} to={path}>
-      {children}
-    </Link>
-  );
+  if (ue) {
+    return (
+      <Link key={path} {...linkProps} className={className} name={item.title || item.name} to={path}>
+        {children}
+      </Link>
+    );
+  } else {
+    return (
+      <Link key={path} className={className} name={item.title || item.name} to={path}>
+        {children}
+      </Link>
+    );
+  }
 };
 
 LinkManager.propTypes = {
   item: PropTypes.object,
   children: PropTypes.oneOfType([PropTypes.any]),
-  className: PropTypes.string
+  className: PropTypes.string,
+  ue: PropTypes.bool
 };
 
 export default LinkManager;
