@@ -40,9 +40,66 @@ header .hero {
 }
 
 .hero .content-block h1,
-.hero .content-block h2 {
+.hero .content-block h2,
+.hero .content-block .title {
   color: #fff;
   text-shadow: 1px 1px #333;
+  color: white;
+  font-size: var(--h1FontSize);
+  font-family: var(--body-title-font-family);
+  font-weight: var(--h1FontWeight);
+  line-height: var(--line-height-l);
+  overflow-wrap: break-word;
+  margin: 27px 0 13.5px 0;
+  padding: 0;
+}
+
+.featured .content-block .title {
+  font-size: 28px;
+  font-family: adobe-clean, arial, sans-serif;
+  font-weight: 500;
+  line-height: 42px;
+  margin: 27px 0 13.5px 0;
+}
+
+.hero .content-block .preTitle {
+  color: #fff;
+  font-family: adobe-clean, arial, sans-serif;
+  font-weight:500;
+  margin-bottom: 13.5px;
+  margin-top: 27px;
+  font-size: 28px;
+  text-shadow: 1px 1px #333;
+}
+
+.featured .content-block .preTitle {
+  font-size: 16px;
+  font-family: adobe-clean, arial, sans-serif;
+  font-weight: 600;
+  line-height: 21px;
+  margin: 23px 0;
+  padding: 0;
+  color: #FE3931;
+  text-transform: uppercase;
+}
+
+.hero .content-block .description {
+  display: none;
+}
+
+.featured .content-block .description {
+  font-size: 3vw;
+  line-height: 1.5;
+  margin: 16px 0 21.5px;
+  text-align: justify;
+}
+
+.hero .content-block .button {
+  display: none;
+}
+
+.teaser .content-block span {
+  display: block;
 }
 
 .hero video, .hero img {
@@ -105,13 +162,6 @@ header .hero {
 .teaser.featured>.container>.content-block {
   max-width: 500px;
   padding: 0 22px 22px;
-}
-
-.teaser.featured>.container>.content-block p {
-  font-size: 3vw;
-  line-height: 1.5;
-  margin: 16px 0 13.5px;
-  text-align: justify;
 }
 
 @media only screen and (min-width: 1000px) {
