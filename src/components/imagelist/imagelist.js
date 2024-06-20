@@ -6,7 +6,7 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import LinkManager from '../../utils/link-manager';
 import Image from '../image';
@@ -32,18 +32,6 @@ export const ImageListGQL = `
   }
 }`;
 
-// const imageSizes = [
-//   {
-//     imageWidth: '500px',
-//     renditionName: 'web-optimized-large.webp',
-//     size: '(min-width: 1000px) 500px',
-//   },
-//   {
-//     imageWidth: '331px',
-//     renditionName: 'web-optimized-medium.webp',
-//     size: '331px'
-//   }
-// ];
 
 const cardImageSizes = [
   {
@@ -55,6 +43,19 @@ const cardImageSizes = [
 
 const ImageList = ({ content, config }) => {
   const [position, setPosition] = useState(0);
+  const listRef = useRef(document.body); // Ref for HTML Element
+
+  listRef.current.addEventListener('aue:content-patch', (event) => {
+    console.log(event);
+    if (event.detail) {
+      const { name, value } = event.detail.patch;
+      const section = event.target.querySelector('section');
+      if (section.classList.contains('list-container') && name === 'style') {
+        section.setAttribute('class', `${value} list-container`);
+        event.stopPropagation();
+      }
+    }
+  });
 
   const scrollLeft = (e, num) => {
     const element = e.target.nextElementSibling;
@@ -103,8 +104,8 @@ const ImageList = ({ content, config }) => {
   };
 
   return (
-    <React.Fragment>
-      <section className={`${content.style} list-container`} {...listProps}>
+    <div {...listProps} ref={listRef}>
+      <section className={`${content.style} list-container`}>
         {mapJsonRichText(content.headline.json)}
         {/* {title && <h4>{title.join('')}</h4>} */}
         <i className='arrow left' onClick={e => scrollLeft(e, 300)}></i>
@@ -117,7 +118,7 @@ const ImageList = ({ content, config }) => {
         </div>
         <i className='arrow right' onClick={e => scrollRight(e, 300)}></i>
       </section>
-    </React.Fragment>
+    </div>
   );
 };
 
@@ -127,43 +128,6 @@ ImageList.propTypes = {
   context: PropTypes.object
 };
 
-// const Card = ({ item, style }) => {
-//   const [image, setImage] = useState('');
-
-//   const title = item._metadata.stringMetadata.filter((metadata) => {
-//     if (metadata.name === 'title')
-//       return metadata.value;
-//   });
-//   console.log(item);
-//   const itemProps = {
-//     'data-aue-resource': `urn:aemconnection:${item._path}/jcr:content/data/${item?._variation}`,
-//     'data-aue-type': 'container',
-//     'data-aue-label': title,
-//     'data-aue-behavior': 'component',
-//     'data-aue-prop':'listItems',
-//     'data-aue-model': item?._model?._path,
-//   };
-
-//   return (
-//     <div className='list-item' key={title} {...itemProps}>
-//       <picture>
-//         <img src={image?.src} loading='lazy'
-//           alt={image?.alt || 'list image'}
-//           srcSet={image?.srcset}
-//           width="500"
-//           height="333"
-//           sizes={sizes(imageSizes)} />
-//       </picture>
-
-//     </div>
-//   );
-// };
-
-// Card.propTypes = {
-//   item: PropTypes.object,
-//   style: PropTypes.string
-// };
-
 const ArticleCard = ({ item }) => {
   const editorProps = {
     'data-aue-resource': `urn:aemconnection:${item._path}/jcr:content/data/master`,
@@ -172,14 +136,6 @@ const ArticleCard = ({ item }) => {
     'data-aue-behavior': 'component',
     'data-aue-model': item.model
   };
-
-  // let width = 500;
-  // let height = 360;
-
-  // if (item.style === 'image-grid') {
-  //   width = 350;
-  //   height = 320;
-  // }
 
   return (<div className='list-item' key={item.title} {...editorProps}>
     <Image asset={item.primaryImage} itemProp='primaryImage' imageSizes={cardImageSizes} />
@@ -208,16 +164,8 @@ const AdventureCard = ({ item, style }) => {
     'data-aue-label': `${item.title} Adventure`,
     'data-aue-behavior': 'component',
     'data-aue-model': item.model,
-    'data-aue-prop':'listItems'
+    'data-aue-prop': 'listItems'
   };
-
-  // let width = 500;
-  // let height = 360;
-
-  // if (style === 'image-grid') {
-  //   width = 350;
-  //   height = 320;
-  // }
 
   const imageProps = {
     'data-aue-prop': 'primaryImage',
