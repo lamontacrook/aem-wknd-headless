@@ -46,7 +46,6 @@ const ImageList = ({ content, config }) => {
   const listRef = useRef(document.body); // Ref for HTML Element
 
   listRef.current.addEventListener('aue:content-patch', (event) => {
-    console.log(event);
     if (event.detail) {
       const { name, value } = event.detail.patch;
       const section = event.target.querySelector('section');
