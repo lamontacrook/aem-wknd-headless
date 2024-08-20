@@ -29,12 +29,12 @@ const Modal = ({ config }) => {
       localStorage.removeItem('audience');
     else
       localStorage.setItem('audience', JSON.stringify(audience));
-  }, [audience.value, audience.label]);
+  }, [audience]);
 
   useEffect(() => {
     localStorage.setItem('lang', JSON.stringify(language));
     context.lang = language;
-  }, [language.value, language.label]);
+  }, [context, language]);
 
   const updateAudience = (event) => {
     if (event === null) {

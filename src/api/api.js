@@ -84,7 +84,7 @@ export function useGraphQL(path, params = {}) {
     }
 
     makeRequest();
-  }, [path]);
+  }, [path, context.endpoint, context.serviceURL, params]);
 
 
   return { data, errorMessage };

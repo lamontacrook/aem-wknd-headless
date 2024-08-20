@@ -64,7 +64,7 @@ function customRenderOptions(references) {
 
   return {
     nodeMap: {
-      'reference': (node, children) => {
+      'reference': (node) => {
 
         // variable for reference in _references object
         let reference;

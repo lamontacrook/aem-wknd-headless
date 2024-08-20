@@ -33,7 +33,7 @@ const Settings = () => {
   const [project, setProject] = useState(context.project);
   const [serviceURL, setServiceURL] = useState(context.serviceURL);
   const [config, setConfig] = useState({});
-  const [statusCode, setStatusCode] = useState('');
+  // const [statusCode, setStatusCode] = useState('');
   const [version, setVersion] = useState(context.version);
   const [placeholdersExtensionURL, setPlaceholdersExtensionURL] = useState(context.placeholdersExtensionURL);
   const configPath = `/content/dam/${project}/site/configuration/configuration-v2`;
@@ -71,9 +71,9 @@ const Settings = () => {
         handleError(error);
       });
 
-    const headers = new Headers({
-      'Content-Type': 'text/html',
-    });
+    // const headers = new Headers({
+    //   'Content-Type': 'text/html',
+    // });
   };
 
   useEffect(() => {
