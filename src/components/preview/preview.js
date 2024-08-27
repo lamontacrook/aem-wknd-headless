@@ -49,7 +49,7 @@ const Preview = () => {
   }, [context, handleError, modelType, path]);
 
   let i = 0;
-  console.log(data);
+
   return (
     <React.Fragment>
       {data && data.component && data.component.item && config.configurationByPath && data.component.item.__typename === 'HeaderV2Model' &&
@@ -68,6 +68,7 @@ const Preview = () => {
             <ModelManager
               key={`${data.component.item.__typename}-entity-${i++}`}
               content={data.component.item}
+              references={data.component._references}
               config={config.configurationByPath.item}
             ></ModelManager>
           </div>
