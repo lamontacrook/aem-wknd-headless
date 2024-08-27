@@ -48,7 +48,6 @@ const MagazineArticle = ({ content, references }) => {
 };
 
 function customRenderOptions(references) {
-
   const renderReference = {
     // node contains merged properties of the in-line reference and _references object
     'ImageRef': (node) => {
@@ -64,7 +63,7 @@ function customRenderOptions(references) {
 
   return {
     nodeMap: {
-      'reference': (node, children) => {
+      'reference': (node) => {
 
         // variable for reference in _references object
         let reference;
@@ -73,6 +72,7 @@ function customRenderOptions(references) {
         if (node.data.path) {
           // find reference based on path
           reference = references.find(ref => ref._path === node.data.path);
+          
         }
         // Fragment Reference
         if (node.data.href) {

@@ -3,7 +3,7 @@ import ModelManager from '../../utils/modelmanager';
 import Header from '../header/header';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { prepareRequest, pqs } from '../../utils';
+import { prepareRequest } from '../../utils';
 import { useErrorHandler } from 'react-error-boundary';
 import { AppContext } from '../../utils/context';
 import Modal from '../modal';
@@ -49,7 +49,7 @@ const Preview = () => {
   }, [context, handleError, modelType, path]);
 
   let i = 0;
-  console.log(data);
+
   return (
     <React.Fragment>
       {data && data.component && data.component.item && config.configurationByPath && data.component.item.__typename === 'HeaderV2Model' &&
@@ -68,6 +68,7 @@ const Preview = () => {
             <ModelManager
               key={`${data.component.item.__typename}-entity-${i++}`}
               content={data.component.item}
+              references={data.component._references}
               config={config.configurationByPath.item}
             ></ModelManager>
           </div>
