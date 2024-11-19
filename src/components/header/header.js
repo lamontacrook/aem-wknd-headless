@@ -91,8 +91,13 @@ const Header = ({ content, config, className }) => {
             content={content.teaser}
             config={config.configurationByPath.item}
           ></ModelManager>}
-        {content.banner && !content.teaser &&
-          <Image asset={content.banner} alt='Banner Image' config={config.configurationByPath.item} imageSizes={imageSizes} height={400}/>
+        {content.banner && !content.teaser && (
+          <section class='banner'>
+            <div class='container'>
+              <Image asset={content.banner} alt='Banner Image' config={config.configurationByPath.item} imageSizes={imageSizes} height={400}/>
+            </div>
+          </section>
+        )
         }
       </header>
     </React.Fragment>

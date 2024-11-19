@@ -5,6 +5,9 @@ body {
 .main-body {
   display: flex;
   flex-direction: column;
+
+  max-width: 1412px;
+  margin: auto;
 }
 .main-body > .block {
   width: 100%;

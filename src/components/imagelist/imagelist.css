@@ -88,6 +88,7 @@ it.
   display: inline-block;
   width: 100%;
   overflow-x: hidden;
+  text-align: center;
 }
 
 /* visited link */
@@ -181,7 +182,7 @@ it.
 
 @media screen and (min-width:1000px) {
   .slider-list.list-container .list .list-item {
-    height: 360px;
+    height: var(--image-list-item-width);
   }
 
   .slider-list.list-container .right {

@@ -16,3 +16,7 @@ header.home-article img {
   object-fit: cover;
   overflow: hidden;
 }
+
+section.banner {
+  margin-top: 92px;
+}

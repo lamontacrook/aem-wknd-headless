@@ -229,8 +229,8 @@ div[role=status] {
 
 :root {
   --main-accent-color:#ffc719;
-  --hero-teaser-height:100vh;
-  --hero-teaser-width: 100vw;
+  --hero-teaser-height:480px;
+  --hero-teaser-width: inherit;
   --hero-teaser-positon: sticky;
   --featured-teaser-direction: row-reverse;
   --highlight-background-color: red;
@@ -268,7 +268,9 @@ div[role=status] {
   --body-font-family: adobe-clean, arial, sans-serif;
   --body-title-font-family: var(--body-font-family);
   --nav-height: 59px;
-  --nav-logo-width: 108px;
+  --nav-logo-width: 40px;
+  --nav-logo-padding-top: 18px;
+  --image-list-item-width:260px;
 }
 
 .blue-box {

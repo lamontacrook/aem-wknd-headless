@@ -120,7 +120,6 @@ const Teaser = ({ content }) => {
           {renderAsset(content)}
           <div className='content-block'>
             <span className='title' data-aue-prop='title' data-aue-type='text' data-aue-label='Title'>{content.title}</span>
-            <span className='seperator'></span>
             {content.preTitle && (
               <span className='preTitle' data-aue-prop='preTitle' data-aue-type='text' data-aue-label='Pre-Title'>{content.preTitle}</span>
             )}

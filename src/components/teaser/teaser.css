@@ -1,5 +1,5 @@
 .hero {
-  position: sticky;
+  position: relative;
   width: var(--hero-teaser-width);
   height: var(--hero-teaser-height);
   display: flex;
@@ -42,9 +42,9 @@ header .hero {
 .hero .content-block h1,
 .hero .content-block h2,
 .hero .content-block .title {
-  color: #fff;
-  text-shadow: 1px 1px #333;
-  color: white;
+  color: black;
+  /* text-shadow: 1px 1px #333; */
+  /* color: white; */
   font-size: var(--h1FontSize);
   font-family: var(--body-title-font-family);
   font-weight: var(--h1FontWeight);
@@ -63,13 +63,13 @@ header .hero {
 }
 
 .hero .content-block .preTitle {
-  color: #fff;
+  color: black;
   font-family: adobe-clean, arial, sans-serif;
   font-weight:500;
   margin-bottom: 13.5px;
   margin-top: 27px;
   font-size: 28px;
-  text-shadow: 1px 1px #333;
+  /* text-shadow: 1px 1px #333; */
 }
 
 .featured .content-block .preTitle {
