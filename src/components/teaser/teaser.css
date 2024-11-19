@@ -43,8 +43,6 @@ header .hero {
 .hero .content-block h2,
 .hero .content-block .title {
   color: black;
-  /* text-shadow: 1px 1px #333; */
-  /* color: white; */
   font-size: var(--h1FontSize);
   font-family: var(--body-title-font-family);
   font-weight: var(--h1FontWeight);
