@@ -228,7 +228,7 @@ div[role=status] {
 }
 
 :root {
-  --main-accent-color:#ffc719;
+  --main-accent-color:black;
   --hero-teaser-height:480px;
   --hero-teaser-width: inherit;
   --hero-teaser-positon: sticky;

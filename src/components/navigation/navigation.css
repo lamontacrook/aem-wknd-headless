@@ -11,8 +11,6 @@ header nav {
 }
 
 header nav[aria-expanded='true'] {
-  /* grid-template: 'hamburger brand' 'sections sections' 'tools tools'; */
-  /* grid-template-columns:  100px 1fr 100px; */
   overflow-y: scroll;
   min-height: 100vh;
   background-color: var(--main-accent-color);
@@ -303,7 +301,6 @@ a:focus::after {
     top: -15px;
     left: 20px;
   }
-
 
   header nav .nav-sections > ul > li > ul > li {
     font-size: 18px;

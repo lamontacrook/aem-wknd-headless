@@ -79,7 +79,6 @@ export function useGraphQL(path, params = {}) {
         })
         .catch((error) => {
           setErrors(error);
-          sessionStorage.removeItem('accessToken');
         });
     }
 

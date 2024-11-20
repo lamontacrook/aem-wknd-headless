@@ -83,8 +83,16 @@ const Teaser = ({ content }) => {
     if (event.detail) {
       const { name, value } = event.detail.patch;
       const section = event.target.querySelector('section');
+      console.log(name);
+      console.log(section);
+      console.log(event.detail);
       if (name === 'style' && section.classList.contains('teaser')) {
         section.setAttribute('class', `teaser ${value} iframe`);
+        event.stopPropagation();
+      } else if(name === 'asset' && section.classList.contains('teaser')) {
+        const img = section.querySelector(`picture > [data-aue-prop=${name}]`);
+        img.setAttribute('src', value);
+        img.removeAttribute('srcset');
         event.stopPropagation();
       }
     }
@@ -108,7 +116,7 @@ const Teaser = ({ content }) => {
   const editorProps = {
     'data-aue-resource': `urn:aemconnection:${content._path}/jcr:content/data/${content?._variation}`,
     'data-aue-type': 'reference',
-    'data-aue-label': content?.title,
+    'data-aue-label': content?.title || 'Teaser',
     'data-aue-model': content?._model?._path,
     'data-aue-behavior': 'component'
   };
