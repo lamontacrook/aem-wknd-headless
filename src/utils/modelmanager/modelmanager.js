@@ -3,13 +3,15 @@ import Teaser from '../../components/teaser';
 import ImageList from '../../components/imagelist';
 import MagazineArticle from '../../components/magazine-article';
 import Products from '../../components/products/products';
+import Products2 from '../../components/products2/products2';
 import PropTypes from 'prop-types';
 
 export const componentMapping = {
   Teaser,
   ImageList,
   MagazineArticle,
-  Products
+  Products,
+  Products2
 };
 
 const ModelManager = ({ content, config, references }) => {

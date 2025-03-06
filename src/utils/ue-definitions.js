@@ -63,6 +63,17 @@ export const modelDefinition = () => {
           'valueType': 'string'
         }
       ]
+    },
+    {
+      'id': 'products1',
+      'field': [
+        {
+          'component':'sku',
+          'name': 'sku',
+          'label': 'Alt Text',
+          'valueType': 'string'
+        }
+      ]
     }
   ];
 };
