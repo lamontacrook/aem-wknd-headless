@@ -25,7 +25,7 @@ const Products2 = ({ content }) => {
     <div className='product' {...editorProps}>
       <div className='list-items'>
         <span data-aue-prop='adenture' data-aue-type='text' data-aue-label='Adventure'>{content.adventure}</span>
-        <span data-aue-prop='sku' data-aue-type='text' data-aue-label='SKU'>{content.sku}</span>
+        <span data-aue-prop='sku' data-aue-type='reference' data-aue-data-aue-model='products1' data-aue-filter='cf' data-aue-label='SKU1'>{content.sku}</span>
       </div>
     </div>
   );
