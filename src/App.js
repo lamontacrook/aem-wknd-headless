@@ -46,6 +46,7 @@ const App = () => {
       <HelmetProvider>
         <div className='App'>
           <Helmet>
+            <script src="https://universal-editor-service.adobe.io/cors.js" async />
             <meta name='urn:adobe:aue:system:aemconnection' content={`aem:${aemUrl}`} />
             <script type='application/vnd.adobe.aue.filter+json'>{JSON.stringify(filterDefinition(context))}</script>
             <script type='application/vnd.adobe.aue.component+json'>{JSON.stringify(componentDefinition(context))}</script>

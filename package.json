@@ -1,20 +1,19 @@
 {
   "name": "pure-headless",
   "version": "0.1.0",
-  "homepage": "https://aem-pure-headless.vercel.app/",
+  "homepage": "https://aem-headless-wknd.vercel.app/",
   "author": "Lamont Crook (https://github.com/lamontacrook)",
   "contributors": [
     "Lamont Crook (lamont@adobe.com)"
   ],
   "repository": "lamontacrook/aem-pure-headless",
   "bugs": {
-    "url": "https://github.com/lamontacrook/aem-pure-headless/issues"
+    "url": "https://github.com/lamontacrook/aem-headless-wknd/issues"
   },
   "private": true,
   "dependencies": {
     "@adobe/aem-headless-client-js": "^3.3.0",
     "@adobe/aem-headless-client-nodejs": "^1.1.0",
-    "@adobe/universal-editor-cors": "^2.x.x",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import '@adobe/universal-editor-cors';
+// import '@adobe/universal-editor-cors';
 // import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
 import { register as registerServiceWorker } from './serviceWorkerRegistration';
 
