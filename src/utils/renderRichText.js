@@ -74,6 +74,11 @@ function defaultRenderImage(node) {
   if (mimeType && mimeType.startsWith('image')) {
     return <img src={node.data.path} alt={'reference'} />;
   }
+  // const type = node.data?.type;
+  // console.log(node);
+  // if (type && type === 'fragment') {
+  //   return <ModelManager key={type} content={node}></ModelManager>;
+  // }
   return null;
 }
 
