@@ -1,3 +1,7 @@
+.block :has(.duplex) {
+  background-color: var(--duplex-background-color);
+}
+
 .hero {
   position: sticky;
   width: var(--hero-teaser-width);
@@ -171,7 +175,7 @@ header .hero {
 }
 
 .teaser.duplex {
-  background-color: var(--main-light-background);
+  background-color: none ;
   margin: auto;
   width: 100%;
   border-radius: 5px;
@@ -218,9 +222,13 @@ header .hero {
 }
 
 @media only screen and (min-width: 1000px) {
-  .teaser.featured>.container>picture>img, .teaser.duplex>.container>picture>img {
+  .teaser.featured>.container>picture>img {
     width: 660px;
     box-shadow: 20px 20px var(--main-accent-color);
+  }
+
+  .teaser.duplex>.container>picture>img {
+    width: 460px;
   }
 
   .teaser.featured>.container>video, .teaser.duplex>.container>video {
@@ -232,6 +240,15 @@ header .hero {
     flex-direction: var(--featured-teaser-direction);
     align-items: center;
     padding: 7% 5%;
+  }
+
+  .teaser.duplex>.container {
+    background-color: var(--duplex-container-color);
+    justify-content: center;
+    margin: 7% 5%;
+    padding: 0;
+    border-radius: 2rem;
+    border: 1px solid #ebe7db;
   }
 
   .teaser.featured, .teaser.duplex {
