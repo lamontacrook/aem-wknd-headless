@@ -62,6 +62,14 @@ header .hero {
   margin: 27px 0 13.5px 0;
 }
 
+.duplex .content-block .title {
+  font-size: 28px;
+  font-family: adobe-clean, arial, sans-serif;
+  font-weight: 500;
+  line-height: 42px;
+  margin: 27px 0 13.5px 0;
+}
+
 .hero .content-block .preTitle {
   color: #fff;
   font-family: adobe-clean, arial, sans-serif;
@@ -83,11 +91,29 @@ header .hero {
   text-transform: uppercase;
 }
 
+.duplex .content-block .preTitle {
+  font-size: 16px;
+  font-family: adobe-clean, arial, sans-serif;
+  font-weight: 600;
+  line-height: 21px;
+  margin: 23px 0;
+  padding: 0;
+  color: #FE3931;
+  text-transform: uppercase;
+}
+
 .hero .content-block .description {
   display: none;
 }
 
 .featured .content-block .description {
+  font-size: 3vw;
+  line-height: 1.5;
+  margin: 16px 0 21.5px;
+  text-align: justify;
+}
+
+.duplex .content-block .description {
   font-size: 3vw;
   line-height: 1.5;
   margin: 16px 0 21.5px;
@@ -144,6 +170,13 @@ header .hero {
   border-radius: 5px;
 }
 
+.teaser.duplex {
+  background-color: var(--main-light-background);
+  margin: auto;
+  width: 100%;
+  border-radius: 5px;
+}
+
 .teaser.featured>.container {
   display: flex;
   flex-direction: column;
@@ -164,28 +197,48 @@ header .hero {
   padding: 0 22px 22px;
 }
 
+.teaser.duplex>.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  justify-content: space-around;
+  opacity: 1;
+}
+
+.teaser.duplex>.container>picture>img, .teaser.duplex>.container>video {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.teaser.duplex>.container>.content-block {
+  max-width: 500px;
+  padding: 0 22px 22px;
+}
+
 @media only screen and (min-width: 1000px) {
-  .teaser.featured>.container>picture>img {
+  .teaser.featured>.container>picture>img, .teaser.duplex>.container>picture>img {
     width: 660px;
     box-shadow: 20px 20px var(--main-accent-color);
   }
 
-  .teaser.featured>.container>video {
+  .teaser.featured>.container>video, .teaser.duplex>.container>video {
     width: 660px;
     box-shadow: 20px 20px var(--main-accent-color);
   }
 
-  .teaser.featured>.container {
+  .teaser.featured>.container, .teaser.duplex>.container {
     flex-direction: var(--featured-teaser-direction);
     align-items: center;
     padding: 7% 5%;
   }
 
-  .teaser.featured {
+  .teaser.featured, .teaser.duplex {
     max-width: 1430px;
   }
 
-  .teaser.featured>.container>.content-block p {
+  .teaser.featured>.container>.content-block p, .teaser.duplex>.container>.content-block p {
     font-size: 1vw;
     text-align: left;
   }
